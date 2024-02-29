@@ -341,17 +341,17 @@ extension Mail.Content.Block {
             return buffer.writeString(html)
         case .alternative(let boundary, let text, let html):
             return buffer.writeString("""
-            --\(boundary)
+            --\(boundary)\r
             Content-Type: text/plain; charset=utf-8\r
             Content-Transfer-Encoding: 8BIT\r
 
-            \(text)
-            --\(boundary)
-            Content-Type: text/html; charset=utf-8
-            Content-Transfer-Encoding: 8BIT
+            \(text)\r
+            --\(boundary)\r
+            Content-Type: text/html; charset=utf-8\r
+            Content-Transfer-Encoding: 8BIT\r
 
-            \(html)
-            --\(boundary)--
+            \(html)\r
+            --\(boundary)--\r
             """)
         case .image(let image):
             return buffer.writeString(image.base64)
